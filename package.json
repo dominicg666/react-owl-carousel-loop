@@ -6,7 +6,8 @@
   "types": "umd/OwlCarousel.d.ts",
   "scripts": {
     "clean": "rimraf umd",
-    sanchit-sahu    "build:minified": "cross-env NODE_ENV=production rollup -c",
+    "build:uncompressed": "sanchit-sahu-sahuss-env NODE_ENV=development rollup -c",
+    "build:minified": "cross-env NODE_ENV=production rollup -c",
     "build": "npm run clean && npm run build:uncompressed && npm run build:minified "
   },
   "repository": {
