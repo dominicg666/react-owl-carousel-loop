@@ -213,7 +213,17 @@
     				'filter': worker.filter,
     				'run': $.proxy(worker.run, this)
     			});
-    		}, this));
+			}, this));
+
+			$.event.special.touchstart = {
+				setup: function( _, ns, handle ){
+				  if ( ns.includes("noPreventDefault") ) {
+					this.addEventListener("touchstart", handle, { passive: false });
+				  } else {
+					this.addEventListener("touchstart", handle, { passive: true });
+				  }
+				}
+			  };
 
     		this.setup();
     		this.initialize();
@@ -1685,7 +1695,9 @@
     				return $.inArray(tag, this._states.tags[object.name]) === i;
     			}, this));
     		}
-    	};
+		};
+
+
 
     	/**
     	 * Suppresses events.
