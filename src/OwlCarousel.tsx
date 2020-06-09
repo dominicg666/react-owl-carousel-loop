@@ -23,6 +23,24 @@ export default class ReactOwlCarousel extends Component<OwlCarouselProps> {
     }
 
     public componentDidMount() {
+        $.event.special.touchstart = {
+            setup: function (_, ns, handle) {
+                if (ns.includes("noPreventDefault")) {
+                    this.addEventListener("touchstart", handle, { passive: false });
+                } else {
+                    this.addEventListener("touchstart", handle, { passive: true }); // updated here
+                }
+            }
+        };
+        $.event.special.touchmove = {
+            setup: function (_, ns, handle) {
+                if (ns.includes("noPreventDefault")) {
+                    this.addEventListener("touchmove ", handle, { passive: false });
+                } else {
+                    this.addEventListener("touchmove ", handle, { passive: true }); // updated here
+                }
+            }
+        };
         this.$ele = $(this.container!);
         this.create();
     }
@@ -104,7 +122,7 @@ export default class ReactOwlCarousel extends Component<OwlCarouselProps> {
     public render() {
         const {
             className,
-            ...props,
+            ...props
         } = this.propsWithoutOptions;
 
         return (
