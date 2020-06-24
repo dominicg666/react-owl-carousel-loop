@@ -1,6 +1,6 @@
 {
   "name": "react-owl-carousel-loop",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React.js + Owl Carousel with loop issue fixed",
   "main": "umd/OwlCarousel.js",
   "types": "umd/OwlCarousel.d.ts",
